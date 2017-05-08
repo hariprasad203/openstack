@@ -9,7 +9,7 @@ from scripts import network_time_protocol
 from scripts import openstack_packages
 from scripts import block_storage
 from scripts import list_file
-
+from scripts import ini_files
 
 
 class main():
@@ -31,15 +31,19 @@ class main():
 	def modify_ini_call(self):
 		service=list_file.MODIFY_INI_FILES()
 		service.ADD()
+	def no_modify_ini_call(self):
+		service=ini_files.NO_MODIFY_INI_FILES()
+		service.ADD()
 
 
 try:
 	main_object=main()
-	#main_object.modify_ini_call()
-	main_object.host_call()
+	main_object.modify_ini_call()
+	'''main_object.host_call()
 	main_object.ntp_call()
 	main_object.openstack_packages_call()
-	main_object.block_storage_call()
+	main_object.block_storage_call()'''
+	main_object.no_modify_ini_call()
 
 except Exception as e:
 	print str(e)
