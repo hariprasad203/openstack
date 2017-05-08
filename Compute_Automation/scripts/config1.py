@@ -55,10 +55,23 @@ class NTP(object):
         
 class IDENTITY(object):
     def ini_modify(self,file_name, key, value): 
+	path="chmod 777 "+file_name
+        os.system(path)
 	file1 = fileinput.FileInput(file_name, inplace=1)
 	for line in file1:
 	    if key in line: 
 		line = line.replace(key, value)
+	    sys.stdout.write(line)
+    	file1.close()
+
+
+    def no_changes_ini(self,file_name, key, value): 
+	path="chmod 777 "+file_name
+        os.system(path)
+	file1 = fileinput.FileInput(file_name, inplace=1)
+	for line in file1:
+	    if value in line: 
+		line = line.replace(value, key)
 	    sys.stdout.write(line)
     	file1.close()
 

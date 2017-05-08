@@ -18,7 +18,7 @@ from scripts import dashboard
 from scripts import instance
 from scripts import list_file
 from scripts import mysql_install
-
+from scripts import ini_files
 
 class main():
 	def host_call(self):
@@ -78,6 +78,9 @@ class main():
 	def modify_ini_call(self):
 		service=list_file.MODIFY_INI_FILES()
 		service.ADD()
+	def no_modify_ini_call(self):
+		service=ini_files.NO_MODIFY_INI_FILES()
+		service.ADD()
 	def linux_bridege_ifconfig(self):
 		interface_list = netifaces.interfaces()
 		path = os.path.realpath('Config_files')
@@ -107,10 +110,10 @@ class main():
 
 try:
 	main_object=main()
-	#main_object.modify_ini_call()
+	main_object.modify_ini_call()
 	#main_object.mysql_install()
 	#main_object.mysql_call()
-	'''main_object.host_call()
+	main_object.host_call()
 	main_object.ntp_call()
 	main_object.openstack_packages_call()
 	main_object.message_call()
@@ -125,10 +128,11 @@ try:
 	main_object.run_admin_environment_variables()
 	main_object.networking_call()
 	main_object.run_admin_environment_variables()
-	main_object.dashboard_call()'''
+	main_object.dashboard_call()
 	main_object.run_admin_environment_variables()	
 	main_object.block_storage_call()
 	#main_object.launch_instance_call()
+	#main_object.no_modify_ini_call()
 	
 
 

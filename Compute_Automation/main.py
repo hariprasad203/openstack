@@ -11,6 +11,7 @@ from scripts import openstack_packages
 from scripts import compute_service
 from scripts import networking_service
 from scripts import list_file
+from scripts import ini_files
 
 class main():
 	def host_call(self):
@@ -35,6 +36,9 @@ class main():
 	def modify_ini_call(self):
 		service=list_file.MODIFY_INI_FILES()
 		service.ADD()
+	def no_modify_ini_call(self):
+		service=ini_files.NO_MODIFY_INI_FILES()
+		service.ADD()
 
 	def linux_bridege_ifconfig(self):
 		interface_list = netifaces.interfaces()
@@ -49,13 +53,14 @@ class main():
 
 try:
 	main_object=main()
-	#main_object.modify_ini_call()
-	main_object.host_call()
+	main_object.modify_ini_call()
+	'''main_object.host_call()
 	main_object.ntp_call()
 	main_object.openstack_packages_call()
 	main_object.compute_call()
 	main_object.linux_bridege_ifconfig()
-	main_object.networking_call()
+	main_object.networking_call()'''
+	main_object.no_modify_ini_call()
 
 except Exception as e:
 	print str(e)
